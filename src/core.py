@@ -1,7 +1,8 @@
+from copy import deepcopy
 from sys import argv, exit
-from memory.core import Memory
-from util.core import getSettings
-
+from memory import Memory
+from util import getSettings
+from algorithms import optimalAlgorithm, fifo, secondChance, lru
 
 if __name__ == '__main__':
     if len(argv) != 2:
@@ -15,7 +16,17 @@ if __name__ == '__main__':
     if settings is None:
         exit()
 
-    memory = Memory(settings[0], settings[1])
+    # memory = Memory(deepcopy(settings[0]), deepcopy(settings[1]))
+    # optimalAlgorithm(memory, deepcopy(settings[2]))
+    #
+    # memory = Memory(deepcopy(settings[0]), deepcopy(settings[1]))
+    # fifo(memory, deepcopy(settings[2]))
+
+    # memory = Memory(deepcopy(settings[0]), deepcopy(settings[1]))
+    # secondChance(memory, deepcopy(settings[2]))
+
+    memory = Memory(deepcopy(settings[0]), deepcopy(settings[1]))
+    lru(memory, deepcopy(settings[2]))
 
     file.close()
 
