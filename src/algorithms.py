@@ -8,6 +8,8 @@ def optimalAlgorithm(memory, processQueue):
 
     :param memory: memory obj, create previously.
     :param processQueue: list with processes to be executed.
+    :return: return number of faults.
+    :rtype: int
     :type memory: memory.Memory
     :type processQueue: list
     """
@@ -31,12 +33,12 @@ def optimalAlgorithm(memory, processQueue):
                         if count > processToRemove[1]:
                             processToRemove[0] = processInMemory
                             processToRemove[1] = count
-                    memory.replaceProcess(processToRemove[0], processQueue[
-                        i])  # Replaces with the process that will take longer to be requested
+                    memory.replaceProcess(processToRemove[0], processQueue[i])  # Replaces with the process that will take longer to be requested
                     print('Replaced process ', processToRemove[0], ' by process ', processQueue[i])
                     numberOfFaults += 1
         print('Physical Memory: ', memory)
     print('\nOptimal Algorithm finalized. Number of faults: ', numberOfFaults, '\n')
+    return numberOfFaults
 
 
 def fifo(memory, processQueue):
@@ -45,6 +47,8 @@ def fifo(memory, processQueue):
 
     :param memory: memory obj, create previously.
     :param processQueue: list with processes to be executed.
+    :return: return number of faults.
+    :rtype: int
     :type memory: memory.Memory
     :type processQueue: list
     """
@@ -71,6 +75,7 @@ def fifo(memory, processQueue):
         print('Physical Memory: ', memory)
 
     print('\nFifo Algorithm finalized. Number of faults: ', numberOfFaults, '\n')
+    return numberOfFaults
 
 
 def secondChance(memory, processQueue):
@@ -80,6 +85,8 @@ def secondChance(memory, processQueue):
 
     :param memory: memory obj, create previously.
     :param processQueue: list with processes to be executed.
+    :return: return number of faults.
+    :rtype: int
     :type memory: memory.Memory
     :type processQueue: list
     """
@@ -115,6 +122,7 @@ def secondChance(memory, processQueue):
         print('Physical Memory: ', memory)
 
     print('\nSecond Chance Algorithm finalized. Number of faults: ', numberOfFaults, '\n')
+    return numberOfFaults
 
 
 def lru(memory, processQueue):
@@ -123,6 +131,8 @@ def lru(memory, processQueue):
 
     :param memory: memory obj, create previously.
     :param processQueue: list with processes to be executed.
+    :return: return number of faults.
+    :rtype: int
     :type memory: memory.Memory
     :type processQueue: list
     """
@@ -152,6 +162,7 @@ def lru(memory, processQueue):
         print('Physical Memory: ', memory)
 
     print('\nLRU Algorithm finalized. Number of faults: ', numberOfFaults, '\n')
+    return numberOfFaults
 
 
 def nru(memory, processQueue, actionQueue):
@@ -161,6 +172,8 @@ def nru(memory, processQueue, actionQueue):
     :param memory: memory obj, create previously.
     :param processQueue: list with processes to be executed.
     :param actionQueue: list with action for witch process.
+    :return: return number of faults.
+    :rtype: int
     :type memory: memory.Memory
     :type processQueue: list
     :type actionQueue: list
@@ -180,16 +193,15 @@ def nru(memory, processQueue, actionQueue):
                     memory.replaceProcess(processToRemove, processQueue[i])
                     print('Replaced process ', processToRemove, ' by process ', processQueue[i])
                     numberOfFaults += 1
-            if actionQueue[i] == 'E':
-                memory.setReferencedBit(processQueue[i], 1)
-                memory.setModifiedBit(processQueue[i], 1)
-            else:
-                memory.setReferencedBit(processQueue[i], 1)
-                memory.setModifiedBit(processQueue[i], 0)
+                    if actionQueue[i] == 'W':
+                        memory.setModifiedBit(processQueue[i], 1)
+                    else:
+                        memory.setModifiedBit(processQueue[i], 0)
+            memory.setReferencedBit(processQueue[i], 1)
         else:
-            # TODO transportar bit m e tudo mais
-            pass
-
+            for processInMemory in processesInMemory:
+                memory.setReferencedBit(processInMemory, 0)
         print('Physical Memory: ', memory)
 
     print('\nNRU Algorithm finalized. Number of faults: ', numberOfFaults, '\n')
+    return numberOfFaults

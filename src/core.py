@@ -13,23 +13,29 @@ if __name__ == '__main__':
     file = open(argv[1], 'r')
 
     settings = util.getSettings(file)
+    file.close()
 
     if settings is None:
         exit()
 
     memory = memory.Memory(deepcopy(settings[0]), deepcopy(settings[1]))
-    algorithms.optimalAlgorithm(memory, deepcopy(settings[2]))
+    optimalAlgorith = algorithms.optimalAlgorithm(memory, deepcopy(settings[2]))
 
     memory.reset(deepcopy(settings[1]))
-    algorithms.fifo(memory, deepcopy(settings[2]))
+    fifo = algorithms.fifo(memory, deepcopy(settings[2]))
 
     memory.reset(deepcopy(settings[1]))
-    algorithms.secondChance(memory, deepcopy(settings[2]))
+    secondChance = algorithms.secondChance(memory, deepcopy(settings[2]))
 
     memory.reset(deepcopy(settings[1]))
-    algorithms.lru(memory, deepcopy(settings[2]))
+    lru = algorithms.lru(memory, deepcopy(settings[2]))
 
     memory.reset(deepcopy(settings[1]))
-    algorithms.nru(memory, deepcopy(settings[2]), deepcopy(settings[3]))
+    nru = algorithms.nru(memory, deepcopy(settings[2]), deepcopy(settings[3]))
 
-    file.close()
+    print('Results:\n')
+    print('\tOptimal Algorith: ', optimalAlgorith, ' faults.')
+    print('\tFIFO: ', fifo, ' faults.')
+    print('\tSecond Chance: ', secondChance, ' faults.')
+    print('\tLRU: ', lru, ' faults.')
+    print('\tNRU: ', nru, ' faults.')

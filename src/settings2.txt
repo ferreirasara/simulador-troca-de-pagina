@@ -1,0 +1,4 @@
+64
+Ji,0,0,0,0,0,Ah,0,Dk,0,Dg,Hi,Ha,0,Gi,Bc,Dc,Ag,0,Fi,Gh,Bk,Hd,Ga,Ac,Ce,0,0,Hf,Jj,Gf,0,0,0,0,0,Bb,0,Gb,0,Gb,Dh,Fb,Ai,Bi,Hd,Gi,0,0,Ia,0,Ch,0,Ee,0,Jh,0,0,0,Ba,0,0,Eg,Bd
+Fk,Hk,Jk,Ab,Dg,Ii,Ed,|,Fg,Ah,Hd,Bk,Cc,Gk,Hk,Ck,Ii,Fh,Gc,Jk,Fh,Gf,|,Ik,Ac,Ib,Cc,Ca,Ei,Eb,|,Da,Ji,Ck,Ee,Ca,Je,Fc,Jh,Ji,|,He,Cf,Jc,Be,Bg,Gk,Hk,Ch,Ck,Ih,Ci,Ji,Cb,Eg,Dg,Ea,Jj,Ji,Ee,Fi,Hg,Ef,Ik,Eb,Gi,Bc,Ej,Hj,|,Dk,Hj,Cg,Ec,Hi,Dc,Ce,Ef,|,Gg,Hg,Cg,Fh,|,He,Eh,Ch,Jf,|,Hd,Cj,Hg,Bi,Bg,|,Dc,Bf,Ja,Eh,Jj,Cj,Ji,Aa,Ai,Jf,Jc,Ia,Gk,Gd,Bj,Ai,Gi,Ij,Eh,Hk,Hh,|,Bk,Cb,Aj,Dk,Bj,|,Ea,Dj,Bd,Be,Bi,Ie,Ea,|,Ic,Ek,Ic,Jf,|,Jk,Ab,Gi,Dk,De,Ag,Hf,Ae,|,Ab,Ea,|,Id,Gf,|,Ba,Cd
+W,W,W,W,R,W,W,|,R,R,R,R,R,R,W,W,W,R,R,R,R,W,|,W,R,R,R,R,R,R,|,R,W,W,W,R,W,R,W,W,|,W,W,W,R,R,R,R,W,W,W,W,R,W,R,R,W,R,W,R,R,R,R,W,R,W,R,W,R,|,R,R,W,R,R,W,W,R,|,W,W,R,R,|,W,W,W,W,|,W,R,R,W,W,|,W,R,W,W,W,W,R,R,R,W,R,W,W,W,R,W,R,R,R,R,R,|,W,R,W,W,W,|,W,W,W,W,R,R,W,|,W,W,R,R,|,R,R,W,W,R,R,R,W,|,W,W,|,W,W,|,W,W

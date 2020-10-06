@@ -1,4 +1,4 @@
 3
 A,C,B
 |,D,|,B,A,A,|,B,D,|,C,B,A,C,|,B,D
-|,E,|,E,E,L,|,L,L,|,E,L,L,E,|,L,E
+|,W,|,W,W,R,|,R,R,|,W,R,R,W,|,R,W
