@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module util</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>util</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:d%3A%5Cgoogle%20drive%5Cfaculdade%5C6%C2%B0%20per%C3%ADodo%5Csistemas%20operacionais%20avan%C3%A7ados%5Cestudos%20dirigidos%5Csimulador-troca-de-pagina%5Csrc%5Cutil.py">d:\google drive\faculdade\6° período\sistemas operacionais avançados\estudos dirigidos\simulador-troca-de-pagina\src\util.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-calcClassOfNRUProcesses"><strong>calcClassOfNRUProcesses</strong></a>(processesClass)</dt><dd><tt>Calculates&nbsp;the&nbsp;class&nbsp;of&nbsp;the&nbsp;processes.<br>
+&nbsp;<br>
+:param&nbsp;processesClass:&nbsp;a&nbsp;list&nbsp;created&nbsp;by&nbsp;NRU&nbsp;algorithm.<br>
+:type&nbsp;processesClass:&nbsp;list[list[int]]</tt></dd></dl>
+ <dl><dt><a name="-calcLRUMatrixValue"><strong>calcLRUMatrixValue</strong></a>(matrix)</dt><dd><tt>Calculates&nbsp;the&nbsp;process&nbsp;usage&nbsp;time.<br>
+&nbsp;<br>
+:param&nbsp;matrix:&nbsp;a&nbsp;matrix&nbsp;created&nbsp;by&nbsp;LRU&nbsp;algorithm.<br>
+:type&nbsp;matrix:&nbsp;list[list[int]]</tt></dd></dl>
+ <dl><dt><a name="-getMinorClassNRU"><strong>getMinorClassNRU</strong></a>(processesClass)</dt><dd><tt>Get&nbsp;index&nbsp;of&nbsp;minor&nbsp;value&nbsp;class.<br>
+&nbsp;<br>
+:param&nbsp;processesClass:&nbsp;a&nbsp;list&nbsp;created&nbsp;by&nbsp;NRU&nbsp;algorithm.<br>
+:type&nbsp;processesClass:&nbsp;list[list[int]]<br>
+:return&nbsp;index&nbsp;if&nbsp;minor&nbsp;value.<br>
+:rtype:&nbsp;int</tt></dd></dl>
+ <dl><dt><a name="-getMinorValueLRUMatrix"><strong>getMinorValueLRUMatrix</strong></a>(matrix)</dt><dd><tt>Get&nbsp;index&nbsp;of&nbsp;minor&nbsp;value&nbsp;(process&nbsp;that&nbsp;is&nbsp;the&nbsp;longest&nbsp;unused).<br>
+&nbsp;<br>
+:param&nbsp;matrix:&nbsp;a&nbsp;matrix&nbsp;created&nbsp;by&nbsp;LRU&nbsp;algorithm.<br>
+:type&nbsp;matrix:&nbsp;list[list[int]]<br>
+:return&nbsp;index&nbsp;if&nbsp;minor&nbsp;value.<br>
+:rtype:&nbsp;int</tt></dd></dl>
+ <dl><dt><a name="-getSettings"><strong>getSettings</strong></a>(file)</dt><dd><tt>This&nbsp;functions&nbsp;receives&nbsp;a&nbsp;file,&nbsp;process&nbsp;and&nbsp;validate&nbsp;information,&nbsp;and&nbsp;finally&nbsp;return&nbsp;a&nbsp;list&nbsp;with&nbsp;configurations&nbsp;to&nbsp;simulator.<br>
+&nbsp;<br>
+:param&nbsp;file:&nbsp;a&nbsp;file&nbsp;open&nbsp;previously.<br>
+:type&nbsp;file:&nbsp;TextWrapper<br>
+:return:&nbsp;list&nbsp;with&nbsp;configurations<br>
+:rtype:&nbsp;tuple[int,&nbsp;list[str],&nbsp;list[str],&nbsp;list[str]]</tt></dd></dl>
+ <dl><dt><a name="-setValueInLRUMatrix"><strong>setValueInLRUMatrix</strong></a>(matrix, index)</dt><dd><tt>Set&nbsp;line&nbsp;equal&nbsp;to&nbsp;1,&nbsp;and&nbsp;column&nbsp;equal&nbsp;to&nbsp;0.<br>
+&nbsp;<br>
+:param&nbsp;matrix:&nbsp;a&nbsp;matrix&nbsp;created&nbsp;by&nbsp;LRU&nbsp;algorithm.<br>
+:param&nbsp;index:&nbsp;index&nbsp;for&nbsp;line&nbsp;and&nbsp;column.<br>
+:type&nbsp;matrix:&nbsp;list[list[int]]<br>
+:type&nbsp;index:&nbsp;int</tt></dd></dl>
+</td></tr></table>
+</body></html>

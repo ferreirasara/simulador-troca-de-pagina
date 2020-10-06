@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module algorithms</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>algorithms</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:d%3A%5Cgoogle%20drive%5Cfaculdade%5C6%C2%B0%20per%C3%ADodo%5Csistemas%20operacionais%20avan%C3%A7ados%5Cestudos%20dirigidos%5Csimulador-troca-de-pagina%5Csrc%5Calgorithms.py">d:\google drive\faculdade\6° período\sistemas operacionais avançados\estudos dirigidos\simulador-troca-de-pagina\src\algorithms.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="util.html">util</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-fifo"><strong>fifo</strong></a>(memory, processQueue)</dt><dd><tt>This&nbsp;algorithm&nbsp;implements&nbsp;a&nbsp;simple&nbsp;fifo&nbsp;queue&nbsp;to&nbsp;decide&nbsp;which&nbsp;process&nbsp;will&nbsp;be&nbsp;replaced.<br>
+&nbsp;<br>
+:param&nbsp;memory:&nbsp;memory&nbsp;obj,&nbsp;create&nbsp;previously.<br>
+:param&nbsp;processQueue:&nbsp;list&nbsp;with&nbsp;processes&nbsp;to&nbsp;be&nbsp;executed.<br>
+:type&nbsp;memory:&nbsp;memory.Memory<br>
+:type&nbsp;processQueue:&nbsp;list</tt></dd></dl>
+ <dl><dt><a name="-lru"><strong>lru</strong></a>(memory, processQueue)</dt><dd><tt>This&nbsp;algorithm&nbsp;implements&nbsp;a&nbsp;matrix&nbsp;to&nbsp;calculate&nbsp;which&nbsp;process&nbsp;has&nbsp;been&nbsp;unused&nbsp;for&nbsp;the&nbsp;longest&nbsp;time.<br>
+&nbsp;<br>
+:param&nbsp;memory:&nbsp;memory&nbsp;obj,&nbsp;create&nbsp;previously.<br>
+:param&nbsp;processQueue:&nbsp;list&nbsp;with&nbsp;processes&nbsp;to&nbsp;be&nbsp;executed.<br>
+:type&nbsp;memory:&nbsp;memory.Memory<br>
+:type&nbsp;processQueue:&nbsp;list</tt></dd></dl>
+ <dl><dt><a name="-nru"><strong>nru</strong></a>(memory, processQueue, actionQueue)</dt><dd><tt>This&nbsp;algorithm&nbsp;implements&nbsp;a&nbsp;matrix&nbsp;to&nbsp;calculate&nbsp;which&nbsp;process&nbsp;has&nbsp;been&nbsp;unused&nbsp;for&nbsp;the&nbsp;longest&nbsp;time.<br>
+&nbsp;<br>
+:param&nbsp;memory:&nbsp;memory&nbsp;obj,&nbsp;create&nbsp;previously.<br>
+:param&nbsp;processQueue:&nbsp;list&nbsp;with&nbsp;processes&nbsp;to&nbsp;be&nbsp;executed.<br>
+:param&nbsp;actionQueue:&nbsp;list&nbsp;with&nbsp;action&nbsp;for&nbsp;witch&nbsp;process.<br>
+:type&nbsp;memory:&nbsp;memory.Memory<br>
+:type&nbsp;processQueue:&nbsp;list<br>
+:type&nbsp;actionQueue:&nbsp;list</tt></dd></dl>
+ <dl><dt><a name="-optimalAlgorithm"><strong>optimalAlgorithm</strong></a>(memory, processQueue)</dt><dd><tt>This&nbsp;algorithm&nbsp;is&nbsp;the&nbsp;best&nbsp;way&nbsp;to&nbsp;manage&nbsp;memory.&nbsp;But&nbsp;is&nbsp;impossible&nbsp;to&nbsp;implement&nbsp;in&nbsp;real&nbsp;life,&nbsp;because&nbsp;there&nbsp;is&nbsp;no<br>
+way&nbsp;to&nbsp;know&nbsp;what&nbsp;process&nbsp;will&nbsp;be&nbsp;in&nbsp;next.<br>
+&nbsp;<br>
+:param&nbsp;memory:&nbsp;memory&nbsp;obj,&nbsp;create&nbsp;previously.<br>
+:param&nbsp;processQueue:&nbsp;list&nbsp;with&nbsp;processes&nbsp;to&nbsp;be&nbsp;executed.<br>
+:type&nbsp;memory:&nbsp;memory.Memory<br>
+:type&nbsp;processQueue:&nbsp;list</tt></dd></dl>
+ <dl><dt><a name="-secondChance"><strong>secondChance</strong></a>(memory, processQueue)</dt><dd><tt>This&nbsp;algorithm&nbsp;implements&nbsp;a&nbsp;simple&nbsp;fifo&nbsp;queue&nbsp;to&nbsp;decide&nbsp;which&nbsp;process&nbsp;will&nbsp;be&nbsp;replaced.&nbsp;But,&nbsp;instead&nbsp;of&nbsp;get&nbsp;the<br>
+first&nbsp;process&nbsp;in&nbsp;queue,&nbsp;the&nbsp;algorithm&nbsp;verify&nbsp;the&nbsp;referenced&nbsp;bit.<br>
+&nbsp;<br>
+:param&nbsp;memory:&nbsp;memory&nbsp;obj,&nbsp;create&nbsp;previously.<br>
+:param&nbsp;processQueue:&nbsp;list&nbsp;with&nbsp;processes&nbsp;to&nbsp;be&nbsp;executed.<br>
+:type&nbsp;memory:&nbsp;memory.Memory<br>
+:type&nbsp;processQueue:&nbsp;list</tt></dd></dl>
+</td></tr></table>
+</body></html>

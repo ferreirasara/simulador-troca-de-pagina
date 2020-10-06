@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module memory</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>memory</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:d%3A%5Cgoogle%20drive%5Cfaculdade%5C6%C2%B0%20per%C3%ADodo%5Csistemas%20operacionais%20avan%C3%A7ados%5Cestudos%20dirigidos%5Csimulador-troca-de-pagina%5Csrc%5Cmemory.py">d:\google drive\faculdade\6° período\sistemas operacionais avançados\estudos dirigidos\simulador-troca-de-pagina\src\memory.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="memory.html#Memory">Memory</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Memory">class <strong>Memory</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Memory">Memory</a>(lenght,&nbsp;initialState)<br>
+&nbsp;<br>
+Class&nbsp;to&nbsp;simulate&nbsp;memory.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Memory-__init__"><strong>__init__</strong></a>(self, lenght, initialState)</dt><dd><tt>Create&nbsp;an&nbsp;<a href="builtins.html#object">object</a>&nbsp;<a href="#Memory">Memory</a>.<br>
+&nbsp;<br>
+:param&nbsp;lenght:&nbsp;lenght&nbsp;of&nbsp;memory.<br>
+:param&nbsp;initialState:&nbsp;list&nbsp;with&nbsp;processes.<br>
+:type&nbsp;lenght:&nbsp;int<br>
+:type&nbsp;initialState:&nbsp;list[str]</tt></dd></dl>
+
+<dl><dt><a name="Memory-__str__"><strong>__str__</strong></a>(self)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<dl><dt><a name="Memory-appendToMemory"><strong>appendToMemory</strong></a>(self, process)</dt><dd><tt>Add&nbsp;an&nbsp;process&nbsp;to&nbsp;memory.<br>
+&nbsp;<br>
+:param&nbsp;process:&nbsp;process&nbsp;to&nbsp;be&nbsp;added.<br>
+:type&nbsp;process:&nbsp;str<br>
+:return:&nbsp;returns&nbsp;true&nbsp;if&nbsp;the&nbsp;process&nbsp;was&nbsp;added,&nbsp;or&nbsp;false&nbsp;if&nbsp;it&nbsp;was&nbsp;not&nbsp;added.<br>
+:rtype:&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="Memory-getLenght"><strong>getLenght</strong></a>(self)</dt><dd><tt>Return&nbsp;lenght&nbsp;of&nbsp;memory.<br>
+&nbsp;<br>
+:return:&nbsp;lenght.<br>
+:rtype:&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="Memory-getOnlyProcesses"><strong>getOnlyProcesses</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;list&nbsp;with&nbsp;only&nbsp;processes.<br>
+&nbsp;<br>
+:return:&nbsp;a&nbsp;list&nbsp;with&nbsp;processes.<br>
+:rtype:&nbsp;list[list[str]]</tt></dd></dl>
+
+<dl><dt><a name="Memory-getProcessIndex"><strong>getProcessIndex</strong></a>(self, process)</dt><dd><tt>Search&nbsp;a&nbsp;process,&nbsp;and&nbsp;return&nbsp;index.<br>
+&nbsp;<br>
+:param&nbsp;process:&nbsp;process&nbsp;to&nbsp;be&nbsp;searched.<br>
+:type&nbsp;process:&nbsp;str<br>
+:return:&nbsp;index&nbsp;of&nbsp;process.<br>
+:rtype:&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="Memory-getProcessesAndBits"><strong>getProcessesAndBits</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;list&nbsp;with&nbsp;processes&nbsp;and&nbsp;bits&nbsp;(valid,&nbsp;present,&nbsp;referenced,&nbsp;modified,&nbsp;frame/disk).<br>
+&nbsp;<br>
+:return:&nbsp;a&nbsp;list&nbsp;with&nbsp;processes&nbsp;and&nbsp;bits.<br>
+:rtype:&nbsp;list[list[str,&nbsp;int,&nbsp;int,&nbsp;int,&nbsp;int,&nbsp;int]]</tt></dd></dl>
+
+<dl><dt><a name="Memory-memoryIsFull"><strong>memoryIsFull</strong></a>(self)</dt><dd><tt>Verify&nbsp;if&nbsp;memory&nbsp;is&nbsp;full.<br>
+&nbsp;<br>
+:return:&nbsp;<a href="#Memory">Memory</a>&nbsp;full.<br>
+:rtype:&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="Memory-processModified"><strong>processModified</strong></a>(self, process)</dt><dd><tt>Verify&nbsp;modified&nbsp;bit&nbsp;of&nbsp;a&nbsp;process.<br>
+&nbsp;<br>
+:param&nbsp;process:&nbsp;process&nbsp;to&nbsp;be&nbsp;verified.<br>
+:type&nbsp;process:&nbsp;str<br>
+:return:&nbsp;Process&nbsp;modified.<br>
+:rtype:&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="Memory-processPresent"><strong>processPresent</strong></a>(self, process)</dt><dd><tt>Verify&nbsp;present&nbsp;bit&nbsp;of&nbsp;a&nbsp;process.<br>
+&nbsp;<br>
+:param&nbsp;process:&nbsp;process&nbsp;to&nbsp;be&nbsp;verified.<br>
+:type&nbsp;process:&nbsp;str<br>
+:return:&nbsp;Process&nbsp;present.<br>
+:rtype:&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="Memory-processReferenced"><strong>processReferenced</strong></a>(self, process)</dt><dd><tt>Verify&nbsp;referenced&nbsp;bit&nbsp;of&nbsp;a&nbsp;process.<br>
+&nbsp;<br>
+:param&nbsp;process:&nbsp;process&nbsp;to&nbsp;be&nbsp;verified.<br>
+:type&nbsp;process:&nbsp;str<br>
+:return:&nbsp;Process&nbsp;referenced.<br>
+:rtype:&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="Memory-processValid"><strong>processValid</strong></a>(self, process)</dt><dd><tt>Verify&nbsp;valid&nbsp;bit&nbsp;of&nbsp;a&nbsp;process.<br>
+&nbsp;<br>
+:param&nbsp;process:&nbsp;process&nbsp;to&nbsp;be&nbsp;verified.<br>
+:type&nbsp;process:&nbsp;str<br>
+:return:&nbsp;Process&nbsp;valid.<br>
+:rtype:&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="Memory-removeFromMemory"><strong>removeFromMemory</strong></a>(self, process)</dt><dd><tt>Remove&nbsp;an&nbsp;process&nbsp;to&nbsp;memory.<br>
+&nbsp;<br>
+:param&nbsp;process:&nbsp;process&nbsp;to&nbsp;be&nbsp;removed.<br>
+:type&nbsp;process:&nbsp;str<br>
+:return:&nbsp;returns&nbsp;true&nbsp;if&nbsp;the&nbsp;process&nbsp;was&nbsp;removed,&nbsp;or&nbsp;false&nbsp;if&nbsp;it&nbsp;was&nbsp;not&nbsp;removed.<br>
+:rtype:&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="Memory-replaceProcess"><strong>replaceProcess</strong></a>(self, processToReplace, newProcess)</dt><dd><tt>Replace&nbsp;a&nbsp;process&nbsp;in&nbsp;memory,&nbsp;by&nbsp;other&nbsp;process.<br>
+&nbsp;<br>
+:param&nbsp;processToReplace:&nbsp;process&nbsp;to&nbsp;be&nbsp;replaced.<br>
+:param&nbsp;newProcess:&nbsp;process&nbsp;to&nbsp;be&nbsp;added.<br>
+:type&nbsp;processToReplace:&nbsp;str<br>
+:type&nbsp;newProcess:&nbsp;str<br>
+:return:&nbsp;returns&nbsp;true&nbsp;if&nbsp;the&nbsp;process&nbsp;was&nbsp;replaced,&nbsp;or&nbsp;false&nbsp;if&nbsp;it&nbsp;was&nbsp;not&nbsp;replaced.<br>
+:rtype:&nbsp;bool</tt></dd></dl>
+
+<dl><dt><a name="Memory-reset"><strong>reset</strong></a>(self, initialState)</dt><dd><tt>Reset&nbsp;memory&nbsp;to&nbsp;initial&nbsp;state.<br>
+&nbsp;<br>
+:param&nbsp;initialState:&nbsp;&nbsp;list&nbsp;with&nbsp;processes.<br>
+:type&nbsp;initialState:&nbsp;list[str]</tt></dd></dl>
+
+<dl><dt><a name="Memory-setModifiedBit"><strong>setModifiedBit</strong></a>(self, process, bit)</dt><dd><tt>Set&nbsp;modified&nbsp;bit&nbsp;of&nbsp;a&nbsp;process.<br>
+&nbsp;<br>
+:param&nbsp;process:&nbsp;process&nbsp;to&nbsp;be&nbsp;searched.<br>
+:param&nbsp;bit:&nbsp;0&nbsp;or&nbsp;1.<br>
+:type&nbsp;process:&nbsp;str<br>
+:type&nbsp;bit:&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="Memory-setPresentdBit"><strong>setPresentdBit</strong></a>(self, process, bit)</dt><dd><tt>Set&nbsp;present&nbsp;bit&nbsp;of&nbsp;a&nbsp;process.<br>
+&nbsp;<br>
+:param&nbsp;process:&nbsp;process&nbsp;to&nbsp;be&nbsp;searched.<br>
+:param&nbsp;bit:&nbsp;0&nbsp;or&nbsp;1.<br>
+:type&nbsp;process:&nbsp;str<br>
+:type&nbsp;bit:&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="Memory-setReferencedBit"><strong>setReferencedBit</strong></a>(self, process, bit)</dt><dd><tt>Set&nbsp;referenced&nbsp;bit&nbsp;of&nbsp;a&nbsp;process.<br>
+&nbsp;<br>
+:param&nbsp;process:&nbsp;process&nbsp;to&nbsp;be&nbsp;searched.<br>
+:param&nbsp;bit:&nbsp;0&nbsp;or&nbsp;1.<br>
+:type&nbsp;process:&nbsp;str<br>
+:type&nbsp;bit:&nbsp;int</tt></dd></dl>
+
+<dl><dt><a name="Memory-setValidBit"><strong>setValidBit</strong></a>(self, process, bit)</dt><dd><tt>Set&nbsp;valid&nbsp;bit&nbsp;of&nbsp;a&nbsp;process.<br>
+&nbsp;<br>
+:param&nbsp;process:&nbsp;process&nbsp;to&nbsp;be&nbsp;searched.<br>
+:param&nbsp;bit:&nbsp;0&nbsp;or&nbsp;1.<br>
+:type&nbsp;process:&nbsp;str<br>
+:type&nbsp;bit:&nbsp;int</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>memory</strong> = {'lenght': 0, 'physicalMemory': []}</dl>
+
+</td></tr></table></td></tr></table>
+</body></html>
