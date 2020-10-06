@@ -1,6 +1,17 @@
-from util import calcLRUMatrixValue, getMinorValueLRUMatrix, setValueInLRUMatrix
+import util
+
 
 def optimalAlgorithm(memory, processQueue):
+    """
+    This algorithm is the best way to manage memory. But is impossible to implement in real life, because there is no
+    way to know what process will be in next.
+
+    :param memory: memory obj, create previously.
+    :param processQueue: list with processes to be executed.
+    :type memory: memory.Memory
+    :type processQueue: list
+    """
+
     print('Physical Memory (Initial): ', memory)
     numberOfFaults = 0
     for i in range(len(processQueue)):
@@ -20,7 +31,8 @@ def optimalAlgorithm(memory, processQueue):
                         if count > processToRemove[1]:
                             processToRemove[0] = processInMemory
                             processToRemove[1] = count
-                    memory.replaceProcess(processToRemove[0], processQueue[i])  # Replaces with the process that will take longer to be requested
+                    memory.replaceProcess(processToRemove[0], processQueue[
+                        i])  # Replaces with the process that will take longer to be requested
                     print('Replaced process ', processToRemove[0], ' by process ', processQueue[i])
                     numberOfFaults += 1
         print('Physical Memory: ', memory)
@@ -28,6 +40,15 @@ def optimalAlgorithm(memory, processQueue):
 
 
 def fifo(memory, processQueue):
+    """
+    This algorithm implements a simple fifo queue to decide which process will be replaced.
+
+    :param memory: memory obj, create previously.
+    :param processQueue: list with processes to be executed.
+    :type memory: memory.Memory
+    :type processQueue: list
+    """
+
     print('Physical Memory (Initial): ', memory)
     numberOfFaults = 0
     fifoQueue = memory.getOnlyProcesses()
@@ -53,6 +74,16 @@ def fifo(memory, processQueue):
 
 
 def secondChance(memory, processQueue):
+    """
+    This algorithm implements a simple fifo queue to decide which process will be replaced. But, instead of get the
+    first process in queue, the algorithm verify the referenced bit.
+
+    :param memory: memory obj, create previously.
+    :param processQueue: list with processes to be executed.
+    :type memory: memory.Memory
+    :type processQueue: list
+    """
+
     print('Physical Memory (Initial): ', memory)
     numberOfFaults = 0
     fifoQueue = memory.getOnlyProcesses()
@@ -61,7 +92,6 @@ def secondChance(memory, processQueue):
         if process != '|':  # Ignore clock
             if process not in processesInMemory:  # If actual process not in memory, cause a segmentation fault
                 print('Segmentation Fault on process ', process)
-                print(fifoQueue)
                 if not memory.appendToMemory(process):  # If memory is full
                     while memory.processReferenced(fifoQueue[0]):  # While referenced bit is 1, set referenced bit to 0 and move process to end of queue
                         memory.setReferencedBit(fifoQueue[0], 0)
@@ -88,24 +118,78 @@ def secondChance(memory, processQueue):
 
 
 def lru(memory, processQueue):
+    """
+    This algorithm implements a matrix to calculate which process has been unused for the longest time.
+
+    :param memory: memory obj, create previously.
+    :param processQueue: list with processes to be executed.
+    :type memory: memory.Memory
+    :type processQueue: list
+    """
+
     print('Physical Memory (Initial): ', memory)
     numberOfFaults = 0
     matrix = [[0 for i in range(memory.getLenght() + 1)] for n in range(memory.getLenght())]
-    # TODO calcular historico
-    calcLRUMatrixValue(matrix)
+    processesInMemory = memory.getOnlyProcesses()
+    for i in range(len(processesInMemory)):
+        if processesInMemory[i] != 0:
+            util.setValueInLRUMatrix(matrix, i)
+            util.calcLRUMatrixValue(matrix)
+    util.calcLRUMatrixValue(matrix)
     for process in processQueue:
         processesInMemory = memory.getOnlyProcesses()
         if process != '|':  # Ignore clock
             if process not in processesInMemory:  # If actual process not in memory, cause a segmentation fault
                 print('Segmentation Fault on process ', process)
                 if not memory.appendToMemory(process):  # If memory is full
-                    processToRemove = processesInMemory[getMinorValueLRUMatrix(matrix)]
+                    processToRemove = processesInMemory[util.getMinorValueLRUMatrix(matrix)]
                     memory.replaceProcess(processToRemove, process)  # Replaces with first process in queue
                     print('Replaced process ', processToRemove[0], ' by process ', process)
                     numberOfFaults += 1
             processesInMemory = memory.getOnlyProcesses()
-            setValueInLRUMatrix(matrix, processesInMemory.index(process))
-            calcLRUMatrixValue(matrix)
+            util.setValueInLRUMatrix(matrix, processesInMemory.index(process))
+            util.calcLRUMatrixValue(matrix)
         print('Physical Memory: ', memory)
 
     print('\nLRU Algorithm finalized. Number of faults: ', numberOfFaults, '\n')
+
+
+def nru(memory, processQueue, actionQueue):
+    """
+    This algorithm implements a matrix to calculate which process has been unused for the longest time.
+
+    :param memory: memory obj, create previously.
+    :param processQueue: list with processes to be executed.
+    :param actionQueue: list with action for witch process.
+    :type memory: memory.Memory
+    :type processQueue: list
+    :type actionQueue: list
+    """
+    print('Physical Memory (Initial): ', memory)
+    numberOfFaults = 0
+    for i in range(len(processQueue)):
+        processesClass = [[process[0], process[3], process[4], 0] for process in memory.getProcessesAndBits()]
+        util.calcClassOfNRUProcesses(processesClass)
+        processesInMemory = memory.getOnlyProcesses()
+        if processQueue[i] != '|':  # Ignore clock
+            if processQueue[i] not in processesInMemory:  # If actual process not in memory, cause a segmentation fault
+                print('Segmentation Fault on process ', processQueue[i])
+                if not memory.appendToMemory(processQueue[i]):  # If memory is full
+                    # TODO remover o processo com classe mais baixa
+                    processToRemove = processesInMemory[util.getMinorClassNRU(processesClass)]
+                    memory.replaceProcess(processToRemove, processQueue[i])
+                    print('Replaced process ', processToRemove, ' by process ', processQueue[i])
+                    numberOfFaults += 1
+            if actionQueue[i] == 'E':
+                memory.setReferencedBit(processQueue[i], 1)
+                memory.setModifiedBit(processQueue[i], 1)
+            else:
+                memory.setReferencedBit(processQueue[i], 1)
+                memory.setModifiedBit(processQueue[i], 0)
+        else:
+            # TODO transportar bit m e tudo mais
+            pass
+
+        print('Physical Memory: ', memory)
+
+    print('\nNRU Algorithm finalized. Number of faults: ', numberOfFaults, '\n')
