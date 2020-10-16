@@ -12,18 +12,18 @@ def getSettings(file):
         print('ERROR - Invalid number of lines.')
         return None
 
-    lenght = lines[0]
+    length = lines[0]
     initialState = lines[1].split(',')
     processQueue = lines[2].split(',')
     processAction = lines[3].split(',')
 
-    if lenght.isdigit():
-        lenght = int(lenght)
-        if lenght > 0:
-            if len(initialState) == lenght:
+    if length.isdigit():
+        length = int(length)
+        if length > 0:
+            if len(initialState) == length:
                 if len(processQueue) == len(processAction):
                     if '0' not in processQueue:
-                        return lenght, initialState, processQueue, processAction
+                        return length, initialState, processQueue, processAction
                     else:
                         print('ERROR - The digit 0 must not be used.')
                 else:

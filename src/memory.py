@@ -6,20 +6,20 @@ class Memory:
     Class to simulate memory.
     """
     memory = {
-        'lenght': 0,
+        'length': 0,
         'physicalMemory': []
     }
 
-    def __init__(self, lenght, initialState):
+    def __init__(self, length, initialState):
         """
         Create an object Memory.
 
-        :param lenght: lenght of memory.
+        :param length: length of memory.
         :param initialState: list with processes.
-        :type lenght: int
+        :type length: int
         :type initialState: list[str]
         """
-        self.memory['lenght'] = lenght
+        self.memory['length'] = length
         self.memory['physicalMemory'] = [[process, 1, 1, 1, 0, randint(0, 9999)] for process in initialState]  # [process, valid, present, referenced, modified, frame/disk]
 
     def reset(self, initialState):
@@ -41,7 +41,7 @@ class Memory:
         :return: index of process.
         :rtype: int
         """
-        for i in range(self.memory['lenght']):
+        for i in range(self.memory['length']):
             if self.memory['physicalMemory'][i][0] == process:
                 return i
         return -1
@@ -64,14 +64,14 @@ class Memory:
         """
         return [p[0] for p in self.memory['physicalMemory']]
 
-    def getLenght(self):
+    def getlength(self):
         """
-        Return lenght of memory.
+        Return length of memory.
 
-        :return: lenght.
+        :return: length.
         :rtype: int
         """
-        return self.memory['lenght']
+        return self.memory['length']
 
     def memoryIsFull(self):
         """
@@ -91,7 +91,7 @@ class Memory:
         :return: Process valid.
         :rtype: bool
         """
-        for i in range(self.memory['lenght']):
+        for i in range(self.memory['length']):
             if self.memory['physicalMemory'][i][0] == process:
                 return self.memory['physicalMemory'][i][1] == 1
         return False
@@ -105,7 +105,7 @@ class Memory:
         :return: Process present.
         :rtype: bool
         """
-        for i in range(self.memory['lenght']):
+        for i in range(self.memory['length']):
             if self.memory['physicalMemory'][i][0] == process:
                 return self.memory['physicalMemory'][i][2] == 1
         return False
@@ -119,7 +119,7 @@ class Memory:
         :return: Process referenced.
         :rtype: bool
         """
-        for i in range(self.memory['lenght']):
+        for i in range(self.memory['length']):
             if self.memory['physicalMemory'][i][0] == process:
                 return self.memory['physicalMemory'][i][3] == 1
         return False
@@ -133,7 +133,7 @@ class Memory:
         :return: Process modified.
         :rtype: bool
         """
-        for i in range(self.memory['lenght']):
+        for i in range(self.memory['length']):
             if self.memory['physicalMemory'][i][0] == process:
                 return self.memory['physicalMemory'][i][4] == 1
         return False
@@ -147,7 +147,7 @@ class Memory:
         :type process: str
         :type bit: int
         """
-        for i in range(self.memory['lenght']):
+        for i in range(self.memory['length']):
             if self.memory['physicalMemory'][i][0] == process:
                 self.memory['physicalMemory'][i][1] = bit
 
@@ -160,7 +160,7 @@ class Memory:
         :type process: str
         :type bit: int
         """
-        for i in range(self.memory['lenght']):
+        for i in range(self.memory['length']):
             if self.memory['physicalMemory'][i][0] == process:
                 self.memory['physicalMemory'][i][2] = bit
 
@@ -173,7 +173,7 @@ class Memory:
         :type process: str
         :type bit: int
         """
-        for i in range(self.memory['lenght']):
+        for i in range(self.memory['length']):
             if self.memory['physicalMemory'][i][0] == process:
                 self.memory['physicalMemory'][i][3] = bit
 
@@ -186,7 +186,7 @@ class Memory:
         :type process: str
         :type bit: int
         """
-        for i in range(self.memory['lenght']):
+        for i in range(self.memory['length']):
             if self.memory['physicalMemory'][i][0] == process:
                 self.memory['physicalMemory'][i][4] = bit
 
@@ -202,9 +202,9 @@ class Memory:
         if self.memoryIsFull():
             return False
         else:
-            for i in range(self.memory['lenght']):
+            for i in range(self.memory['length']):
                 if self.memory['physicalMemory'][i][0] == '0':
-                    self.memory['physicalMemory'][i][0] = process # Process
+                    self.memory['physicalMemory'][i][0] = process  # Process
                     self.memory['physicalMemory'][i][1] = 1  # Valid
                     self.memory['physicalMemory'][i][2] = 1  # Present
                     self.memory['physicalMemory'][i][3] = 1  # Referenced
@@ -221,7 +221,7 @@ class Memory:
         :return: returns true if the process was removed, or false if it was not removed.
         :rtype: bool
         """
-        for i in range(self.memory['lenght']):
+        for i in range(self.memory['length']):
             if self.memory['physicalMemory'][i][0] == process:
                 self.memory['physicalMemory'][i][0] = '0'  # Process
                 self.memory['physicalMemory'][i][1] = 0  # Valid
@@ -243,7 +243,7 @@ class Memory:
         :return: returns true if the process was replaced, or false if it was not replaced.
         :rtype: bool
         """
-        for i in range(self.memory['lenght']):
+        for i in range(self.memory['length']):
             if self.memory['physicalMemory'][i][0] == processToReplace:
                 self.memory['physicalMemory'][i][0] = newProcess  # Process
                 self.memory['physicalMemory'][i][1] = 1  # Valid

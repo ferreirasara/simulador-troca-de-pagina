@@ -19,8 +19,8 @@ def optimalAlgorithm(memory, processQueue):
     for i in range(len(processQueue)):
         processesInMemory = memory.getOnlyProcesses()
         if processQueue[i] != '|':  # Ignore clock
-            if processQueue[i] not in processesInMemory:  # If actual process not in memory, cause a segmentation fault
-                print('Segmentation Fault on process ', processQueue[i])
+            if processQueue[i] not in processesInMemory:  # If actual process not in memory, cause a Page  fault
+                print('Page  Fault on process ', processQueue[i])
                 if not memory.appendToMemory(processQueue[i]):  # If memory is full
                     processToRemove = ['', 0]
                     for processInMemory in processesInMemory:  # Counts how long it will take for the process to be requested again
@@ -59,8 +59,8 @@ def fifo(memory, processQueue):
     for process in processQueue:
         processesInMemory = memory.getOnlyProcesses()
         if process != '|':  # Ignore clock
-            if process not in processesInMemory:  # If actual process not in memory, cause a segmentation fault
-                print('Segmentation Fault on process ', process)
+            if process not in processesInMemory:  # If actual process not in memory, cause a Page  fault
+                print('Page  Fault on process ', process)
                 if not memory.appendToMemory(process):  # If memory is full
                     processToRemove = fifoQueue.pop(0)
                     memory.replaceProcess(processToRemove, process)  # Replaces with first process in queue
@@ -97,8 +97,8 @@ def secondChance(memory, processQueue):
     for process in processQueue:
         processesInMemory = memory.getOnlyProcesses()
         if process != '|':  # Ignore clock
-            if process not in processesInMemory:  # If actual process not in memory, cause a segmentation fault
-                print('Segmentation Fault on process ', process)
+            if process not in processesInMemory:  # If actual process not in memory, cause a Page  fault
+                print('Page  Fault on process ', process)
                 if not memory.appendToMemory(process):  # If memory is full
                     while memory.processReferenced(fifoQueue[0]):  # While referenced bit is 1, set referenced bit to 0 and move process to end of queue
                         memory.setReferencedBit(fifoQueue[0], 0)
@@ -139,7 +139,7 @@ def lru(memory, processQueue):
 
     print('Physical Memory (Initial): ', memory)
     numberOfFaults = 0
-    matrix = [[0 for i in range(memory.getLenght() + 1)] for n in range(memory.getLenght())]
+    matrix = [[0 for i in range(memory.getlength() + 1)] for n in range(memory.getlength())]
     processesInMemory = memory.getOnlyProcesses()
     for i in range(len(processesInMemory)):
         if processesInMemory[i] != 0:
@@ -149,8 +149,8 @@ def lru(memory, processQueue):
     for process in processQueue:
         processesInMemory = memory.getOnlyProcesses()
         if process != '|':  # Ignore clock
-            if process not in processesInMemory:  # If actual process not in memory, cause a segmentation fault
-                print('Segmentation Fault on process ', process)
+            if process not in processesInMemory:  # If actual process not in memory, cause a Page  fault
+                print('Page  Fault on process ', process)
                 if not memory.appendToMemory(process):  # If memory is full
                     processToRemove = processesInMemory[util.getMinorValueLRUMatrix(matrix)]
                     memory.replaceProcess(processToRemove, process)  # Replaces with first process in queue
@@ -185,8 +185,8 @@ def nru(memory, processQueue, actionQueue):
         util.calcClassOfNRUProcesses(processesClass)
         processesInMemory = memory.getOnlyProcesses()
         if processQueue[i] != '|':  # Ignore clock
-            if processQueue[i] not in processesInMemory:  # If actual process not in memory, cause a segmentation fault
-                print('Segmentation Fault on process ', processQueue[i])
+            if processQueue[i] not in processesInMemory:  # If actual process not in memory, cause a Page  fault
+                print('Page  Fault on process ', processQueue[i])
                 if not memory.appendToMemory(processQueue[i]):  # If memory is full
                     # TODO remover o processo com classe mais baixa
                     processToRemove = processesInMemory[util.getMinorClassNRU(processesClass)]
