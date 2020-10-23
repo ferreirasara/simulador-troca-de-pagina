@@ -4,16 +4,20 @@ from sys import argv, exit
 import algorithms
 import memory
 import util
+import matplotlib.pyplot as plt
+
 
 if __name__ == '__main__':
-    if len(argv) != 2:
-        print('ERRO. Use core.py <settings file>')
+    settings = []
+    if len(argv) == 3 and argv[1] == '-f':
+        file = open(argv[2], 'r')
+        settings = util.getSettings(file)
+        file.close()
+    elif len(argv) == 4 and argv[1] == '-g':
+        settings = util.generateSettings(int(argv[2]), int(argv[3]))
+    else:
+        print('ERROR. Use core.py <settings file>')
         exit()
-
-    file = open(argv[1], 'r')
-
-    settings = util.getSettings(file)
-    file.close()
 
     if settings is None:
         exit()
@@ -39,3 +43,7 @@ if __name__ == '__main__':
     print('\tSecond Chance: ', secondChance, ' faults.')
     print('\tLRU: ', lru, ' faults.')
     print('\tNRU: ', nru, ' faults.')
+
+    # plt.bar(['Optimal Algorith', 'FIFO', 'Second Chance', 'LRU', 'NRU'], [optimalAlgorith, fifo, secondChance, lru, nru])
+    # plt.ylabel('Algorithms')
+    # plt.show()

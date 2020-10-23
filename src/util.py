@@ -1,6 +1,55 @@
+from random import randint, choice
+import string
+
+
+def generateProcessName():
+    """
+    This function generate two random letters.
+
+    :return: A string with two letters, for a name of process
+    :rtype: str
+    """
+    letters = string.ascii_lowercase
+    return ''.join(choice(letters) for i in range(2))
+
+
+def generateSettings(lenght, totalProcess):
+    """
+    This function receives the lenght of memory and total of process that will run, and return a list with configurations to simulator.
+
+    :param lenght: a file open previously.
+    :type lenght: TextWrapper
+    :param totalProcess: a file open previously.
+    :type totalProcess: TextWrapper
+    :return: list with configurations
+    :rtype: tuple[int, list[str], list[str], list[str]]
+    """
+    # lenght = randint(0, 100)
+    initialState = []
+    processQueue = []
+    processAction = []
+
+    for process in range(lenght):
+        if randint(0, 10) == 1:
+            initialState.append('0')
+        else:
+            initialState.append(generateProcessName())
+
+    # totalProcess = randint(999, 9999)
+    for process in range(totalProcess):
+        if randint(0, 10) == 5:
+            processQueue.append('|')
+            processAction.append('|')
+        else:
+            processQueue.append(generateProcessName())
+            processAction.append(generateProcessName())
+
+    return lenght, initialState, processQueue, processAction
+
+
 def getSettings(file):
     """
-    This functions receives a file, process and validate information, and finally return a list with configurations to simulator.
+    This function receives a file, process and validate information, and finally return a list with configurations to simulator.
 
     :param file: a file open previously.
     :type file: TextWrapper
@@ -12,18 +61,18 @@ def getSettings(file):
         print('ERROR - Invalid number of lines.')
         return None
 
-    length = lines[0]
+    lenght = lines[0]
     initialState = lines[1].split(',')
     processQueue = lines[2].split(',')
     processAction = lines[3].split(',')
 
-    if length.isdigit():
-        length = int(length)
-        if length > 0:
-            if len(initialState) == length:
+    if lenght.isdigit():
+        lenght = int(lenght)
+        if lenght > 0:
+            if len(initialState) == lenght:
                 if len(processQueue) == len(processAction):
                     if '0' not in processQueue:
-                        return length, initialState, processQueue, processAction
+                        return lenght, initialState, processQueue, processAction
                     else:
                         print('ERROR - The digit 0 must not be used.')
                 else:

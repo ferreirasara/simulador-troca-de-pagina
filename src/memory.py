@@ -212,46 +212,44 @@ class Memory:
                     self.memory['physicalMemory'][i][5] = randint(0, 9999)  # Frame/Disk
                     return True
 
-    def removeFromMemory(self, process):
+    def removeFromMemory(self, indexProcessToRemove):
         """
         Remove an process to memory.
 
-        :param process: process to be removed.
-        :type process: str
+        :param indexProcessToRemove: index of a process to be removed.
+        :type indexProcessToRemove: int
         :return: returns true if the process was removed, or false if it was not removed.
         :rtype: bool
         """
-        for i in range(self.memory['length']):
-            if self.memory['physicalMemory'][i][0] == process:
-                self.memory['physicalMemory'][i][0] = '0'  # Process
-                self.memory['physicalMemory'][i][1] = 0  # Valid
-                self.memory['physicalMemory'][i][2] = 0  # Present
-                self.memory['physicalMemory'][i][3] = 0  # Referenced
-                self.memory['physicalMemory'][i][4] = 0  # Modified
-                self.memory['physicalMemory'][i][5] = randint(0, 9999)  # Frame/Disk
-                return True
+        if self.memory['physicalMemory'][indexProcessToRemove][0]:
+            self.memory['physicalMemory'][indexProcessToRemove][0] = '0'  # Process
+            self.memory['physicalMemory'][indexProcessToRemove][1] = 0  # Valid
+            self.memory['physicalMemory'][indexProcessToRemove][2] = 0  # Present
+            self.memory['physicalMemory'][indexProcessToRemove][3] = 0  # Referenced
+            self.memory['physicalMemory'][indexProcessToRemove][4] = 0  # Modified
+            self.memory['physicalMemory'][indexProcessToRemove][5] = randint(0, 9999)  # Frame/Disk
+            return True
         return False
 
-    def replaceProcess(self, processToReplace, newProcess):
+    def replaceProcess(self, indexProcessToReplace, newProcess):
         """
         Replace a process in memory, by other process.
 
-        :param processToReplace: process to be replaced.
+        :param indexProcessToReplace: index of a process to be replaced.
         :param newProcess: process to be added.
-        :type processToReplace: str
+        :type indexProcessToReplace: int
         :type newProcess: str
         :return: returns true if the process was replaced, or false if it was not replaced.
         :rtype: bool
         """
-        for i in range(self.memory['length']):
-            if self.memory['physicalMemory'][i][0] == processToReplace:
-                self.memory['physicalMemory'][i][0] = newProcess  # Process
-                self.memory['physicalMemory'][i][1] = 1  # Valid
-                self.memory['physicalMemory'][i][2] = 1  # Present
-                self.memory['physicalMemory'][i][3] = 1  # Referenced
-                self.memory['physicalMemory'][i][4] = 0  # Modified
-                self.memory['physicalMemory'][i][5] = randint(0, 9999)  # Frame/Disk
-                return True
+        if self.memory['physicalMemory'][indexProcessToReplace][0]:
+            self.memory['physicalMemory'][indexProcessToReplace][0] = newProcess  # Process
+            self.memory['physicalMemory'][indexProcessToReplace][1] = 1  # Valid
+            self.memory['physicalMemory'][indexProcessToReplace][2] = 1  # Present
+            self.memory['physicalMemory'][indexProcessToReplace][3] = 1  # Referenced
+            self.memory['physicalMemory'][indexProcessToReplace][4] = 0  # Modified
+            self.memory['physicalMemory'][indexProcessToReplace][5] = randint(0, 9999)  # Frame/Disk
+            return True
         return False
 
     def __str__(self):

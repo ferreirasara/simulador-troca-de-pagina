@@ -33,7 +33,7 @@ def optimalAlgorithm(memory, processQueue):
                         if count > processToRemove[1]:
                             processToRemove[0] = processInMemory
                             processToRemove[1] = count
-                    memory.replaceProcess(processToRemove[0], processQueue[i])  # Replaces with the process that will take longer to be requested
+                    memory.replaceProcess(processesInMemory.index(processToRemove[0]), processQueue[i])  # Replaces with the process that will take longer to be requested
                     print('Replaced process ', processToRemove[0], ' by process ', processQueue[i])
                     numberOfFaults += 1
         print('Physical Memory: ', memory)
@@ -63,7 +63,7 @@ def fifo(memory, processQueue):
                 print('Page  Fault on process ', process)
                 if not memory.appendToMemory(process):  # If memory is full
                     processToRemove = fifoQueue.pop(0)
-                    memory.replaceProcess(processToRemove, process)  # Replaces with first process in queue
+                    memory.replaceProcess(processesInMemory.index(processToRemove), process)  # Replaces with first process in queue
                     fifoQueue.append(process)  # Add new process to end of queue
                     print('Replaced process ', processToRemove[0], ' by process ', process)
                     numberOfFaults += 1
@@ -106,7 +106,7 @@ def secondChance(memory, processQueue):
                         fifoQueue.append(p)
 
                     processToRemove = fifoQueue.pop(0)  # Now, referenced bit is 0
-                    memory.replaceProcess(processToRemove, process)
+                    memory.replaceProcess(processesInMemory.index(processToRemove), process)
                     fifoQueue.append(process)
                     print('Replaced process ', processToRemove[0], ' by process ', process)
                     numberOfFaults += 1
@@ -153,7 +153,7 @@ def lru(memory, processQueue):
                 print('Page  Fault on process ', process)
                 if not memory.appendToMemory(process):  # If memory is full
                     processToRemove = processesInMemory[util.getMinorValueLRUMatrix(matrix)]
-                    memory.replaceProcess(processToRemove, process)  # Replaces with first process in queue
+                    memory.replaceProcess(processesInMemory.index(processToRemove), process)  # Replaces with first process in queue
                     print('Replaced process ', processToRemove[0], ' by process ', process)
                     numberOfFaults += 1
             processesInMemory = memory.getOnlyProcesses()
@@ -188,9 +188,8 @@ def nru(memory, processQueue, actionQueue):
             if processQueue[i] not in processesInMemory:  # If actual process not in memory, cause a Page  fault
                 print('Page  Fault on process ', processQueue[i])
                 if not memory.appendToMemory(processQueue[i]):  # If memory is full
-                    # TODO remover o processo com classe mais baixa
                     processToRemove = processesInMemory[util.getMinorClassNRU(processesClass)]
-                    memory.replaceProcess(processToRemove, processQueue[i])
+                    memory.replaceProcess(processesInMemory.index(processToRemove), processQueue[i])
                     print('Replaced process ', processToRemove, ' by process ', processQueue[i])
                     numberOfFaults += 1
                     if actionQueue[i] == 'W':
