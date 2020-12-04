@@ -30,7 +30,7 @@ def generateSettings(lenght, totalProcess, numberOfDifferentProcesses, saveToFil
     :rtype: tuple[int, list[str], list[str], list[str]]
     """
     saveToFile = saveToFile.lower()
-    if saveToFile == '-f':
+    if saveToFile == '-s':
         file = open(str('settings'+str(time.time())+'.txt'), 'w')
     processes = [[generateProcessName(), False] for i in range(numberOfDifferentProcesses)]
     numberOfDifferentProcesses -= 1
@@ -55,7 +55,7 @@ def generateSettings(lenght, totalProcess, numberOfDifferentProcesses, saveToFil
             processQueue.append(processes[randint(0, numberOfDifferentProcesses)][0])
             processAction.append('R' if randint(0, 1) == 0 else 'W')
 
-    if saveToFile == '-f':
+    if saveToFile == '-s':
         file.write(str(lenght)+'\n')
         file.write(','.join(initialState)+'\n')
         file.write(','.join(processQueue)+'\n')

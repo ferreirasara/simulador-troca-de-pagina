@@ -1,4 +1,5 @@
 import util
+from random import randint
 
 
 def optimalAlgorithm(memory, processQueue):
@@ -14,21 +15,22 @@ def optimalAlgorithm(memory, processQueue):
     :type processQueue: list
     """
     numberOfFaults = 0
-    occurrences = {i: processQueue.count(i) for i in processQueue if i != '|'}
     for i in range(len(processQueue)):
         processesInMemory = memory.getOnlyProcesses()
         if processQueue[i] != '|':  # Ignore clock
-            occurrences[processQueue[i]] = occurrences[processQueue[i]]-1
-            if occurrences[processQueue[i]] == 0:
-                del(occurrences[processQueue[i]])
             if processQueue[i] not in processesInMemory and not memory.appendToMemory(processQueue[i]):  # If actual process not in memory, cause a Page fault and if memory is full
-                processToRemove = processesInMemory[-1]
-                count = 0
-                for process in occurrences:  # Counts how long it will take for the process to be requested again
-                    if occurrences[process] > count and process in processesInMemory:
-                        processToRemove = process
-                        count = occurrences[process]
-                memory.replaceProcess(processesInMemory.index(processToRemove), processQueue[i])  # Replaces with the process that will take longer to be requested
+                processToRemove = ['', 0]
+                for processInMemory in processesInMemory:  # Counts how long it will take for the process to be requested again
+                    count = 0
+                    for p in processQueue[i:]:  # Considers the queue from the current position
+                        if p != processInMemory:
+                            count += 1
+                        else:
+                            break
+                    if count > processToRemove[1]:
+                        processToRemove[0] = processInMemory
+                        processToRemove[1] = count
+                memory.replaceProcess(processesInMemory.index(processToRemove[0]), processQueue[i])  # Replaces with the process that will take longer to be requested
                 numberOfFaults += 1
     return numberOfFaults
 

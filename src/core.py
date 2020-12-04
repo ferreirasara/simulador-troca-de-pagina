@@ -26,11 +26,9 @@ if __name__ == '__main__':
     if settings is None:
         exit()
 
-    print(settings)
-
     memory = memory.Memory(deepcopy(settings[0]), deepcopy(settings[1]))
     startOptimalAlgorithm = time.perf_counter_ns()
-    optimalAlgorith = algorithms.optimalAlgorithm(memory, deepcopy(settings[2]))
+    optimalAlgorithm = algorithms.optimalAlgorithm(memory, deepcopy(settings[2]))
     endOptimalAlgorithm = time.perf_counter_ns()
     timeOptimalAlgorithm = (endOptimalAlgorithm - startOptimalAlgorithm)
 
@@ -59,13 +57,19 @@ if __name__ == '__main__':
     timeNRU = (endNRU - startNRU)
 
     print('Results:\n')
-    print('\tOptimal Algorith: ', optimalAlgorith, ' faults.\tExecution Time: ', timeOptimalAlgorithm, ' ns')
+    print('\tOptimal Algorith: ', optimalAlgorithm, ' faults.\tExecution Time: ', timeOptimalAlgorithm, ' ns')
     print('\tFIFO: ', fifo, ' faults.\t\tExecution Time: ', timeFifo, ' ns')
     print('\tSecond Chance: ', secondChance, ' faults.\tExecution Time: ', timeSecondChance, ' ns')
     print('\tLRU: ', lru, ' faults.\t\tExecution Time: ', timeLRU, ' ns')
     print('\tNRU: ', nru, ' faults.\t\tExecution Time: ', timeNRU, ' ns')
 
-    plt.bar(['Optimal Algorith', 'FIFO', 'Second Chance', 'LRU', 'NRU'], [timeOptimalAlgorithm, timeFifo, timeSecondChance, timeLRU, timeNRU])
-    plt.xlabel('Algorithms')
+    plt.subplot(2, 1, 1)
+    plt.bar(['Optimal Algorith', 'FIFO', 'Second Chance', 'LRU', 'NRU'],
+            [timeOptimalAlgorithm, timeFifo, timeSecondChance, timeLRU, timeNRU])
     plt.ylabel('Nanoseconds')
+    plt.subplot(2, 1, 2)
+    plt.bar(['Optimal Algorith', 'FIFO', 'Second Chance', 'LRU', 'NRU'],
+            [optimalAlgorithm, fifo, secondChance, lru, nru])
+    plt.ylabel('Faults')
+    plt.xlabel('Algorithms')
     plt.show()
