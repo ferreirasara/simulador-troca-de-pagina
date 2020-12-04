@@ -2,9 +2,14 @@
 
 ## Running the simulator
 
-In the src folder, run the core.py file, along with the name of the configuration file.
-
-Example: `python core.py settings1.txt`
+There are two ways to run the algorithm:
+* Upload a file with the settings:
+  * `python core.py -f <file name>`
+  * Example: `python core.py -f settings1.txt`
+* Generate the settings:
+  * `python core.py -g <memory size> <process queue size> <number of different processes> <save to file (optional)>`
+  * Example (not saved to file): `python core.py -g 2 12 4`
+  * Example (save to file): `python core.py -g 2 12 4 -s`
 
 ## Configuration File
 The configuration file must have the following structure:
