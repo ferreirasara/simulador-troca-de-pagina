@@ -1,5 +1,6 @@
 from random import randint, choice
 import string
+import time
 
 
 def generateProcessName():
@@ -13,18 +14,26 @@ def generateProcessName():
     return ''.join(choice(letters) for i in range(2))
 
 
-def generateSettings(lenght, totalProcess):
+def generateSettings(lenght, totalProcess, numberOfDifferentProcesses, saveToFile=''):
     """
     This function receives the lenght of memory and total of process that will run, and return a list with configurations to simulator.
 
-    :param lenght: a file open previously.
-    :type lenght: TextWrapper
-    :param totalProcess: a file open previously.
-    :type totalProcess: TextWrapper
+    :param lenght: lenght of memory.
+    :type lenght: int
+    :param totalProcess: quantity of processes.
+    :type totalProcess: int
+    :param numberOfDifferentProcesses: number of different processes.
+    :type numberOfDifferentProcesses: int
+    :param saveToFile: save to file? Default: no.
+    :type saveToFile: str
     :return: list with configurations
     :rtype: tuple[int, list[str], list[str], list[str]]
     """
-    # lenght = randint(0, 100)
+    saveToFile = saveToFile.lower()
+    if saveToFile == '-f':
+        file = open(str('settings'+str(time.time())+'.txt'), 'w')
+    processes = [[generateProcessName(), False] for i in range(numberOfDifferentProcesses)]
+    numberOfDifferentProcesses -= 1
     initialState = []
     processQueue = []
     processAction = []
@@ -33,17 +42,25 @@ def generateSettings(lenght, totalProcess):
         if randint(0, 10) == 1:
             initialState.append('0')
         else:
-            initialState.append(generateProcessName())
-
-    # totalProcess = randint(999, 9999)
-    for process in range(totalProcess):
-        if randint(0, 10) == 5:
+            process = processes[randint(0, numberOfDifferentProcesses)]
+            while process[1]:
+                process = processes[randint(0, numberOfDifferentProcesses)]
+            process[1] = True
+            initialState.append(process[0])
+    for i in range(totalProcess):
+        if randint(0, 10) == 1:
             processQueue.append('|')
             processAction.append('|')
         else:
-            processQueue.append(generateProcessName())
-            processAction.append(generateProcessName())
+            processQueue.append(processes[randint(0, numberOfDifferentProcesses)][0])
+            processAction.append('R' if randint(0, 1) == 0 else 'W')
 
+    if saveToFile == '-f':
+        file.write(str(lenght)+'\n')
+        file.write(','.join(initialState)+'\n')
+        file.write(','.join(processQueue)+'\n')
+        file.write(','.join(processAction)+'\n')
+        file.close()
     return lenght, initialState, processQueue, processAction
 
 
